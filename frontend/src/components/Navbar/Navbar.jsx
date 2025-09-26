@@ -64,17 +64,26 @@ const Navbar = () => {
   // EXTRACT MOBILE AUTH BUTTON
   const renderMobileAuthButton = () => {
     return isAuthenticated ? (
-      <button onClick={handleLogout} className="w-full px-4 py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2d1b0e] rounded-xl font-semibold flex items-center justify-center space-x-2 text-sm ">
-        <FiLogOut/>
+      <button
+        onClick={handleLogout}
+        className="w-full px-4 py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2d1b0e] rounded-xl font-semibold flex items-center justify-center space-x-2 text-sm "
+      >
+        <FiLogOut />
         <span>Logout</span>
       </button>
-    ): (
-      <button onClick={() => {
-        navigate('/login')
-        setIsOpen(false)
-      }} className="w-full px-4 py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2d1b0e] "></button>
-    )
-  }
+    ) : (
+      <button
+        onClick={() => {
+          navigate("/login");
+          setIsOpen(false);
+        }}
+        className="w-full px-4 py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2d1b0e] rounded-xl font-semibold flex items-center justify-center space-x-2 text-sm "
+      >
+        <FiKey />
+        <span>Login</span>
+      </button>
+    );
+  };
 
   const navLinks = [
     { name: "Home", to: "/", icon: <FiHome /> },
@@ -149,6 +158,7 @@ const Navbar = () => {
                   </span>
                 )}
               </NavLink>
+              {renderDesktopAuthButton()}
             </div>
           </div>
           {/*  MOBILE MENU */}
@@ -213,6 +223,7 @@ const Navbar = () => {
                   </span>
                 )}
               </NavLink>
+              {renderMobileAuthButton()}
             </div>
           </div>
         </div>
